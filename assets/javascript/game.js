@@ -1,8 +1,9 @@
 
 
-  var targetNumber = 53;
+  var targetNumber = Math.floor(Math.random() * 120) + 19;
 
-  $("#number-to-guess").text(targetNumber);
+  $("#randomNumb").html(targetNumber);
+  console.log(targetNumber);
 
   var counter = 0;
 
