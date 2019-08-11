@@ -1,22 +1,28 @@
-
+$(document).ready(function() {
 
   var targetNumber = Math.floor(Math.random() * 120) + 19;
 
   $("#randomNumb").html(targetNumber);
   console.log(targetNumber);
 
-  var counter = 0;
+  var playerScore = 0;
+  var wins = 0;
+  var losses = 0;
 
   // Now for the hard part. Creating multiple crystals each with their own unique number value.
 
   // We begin by expanding our array to include four options.
-  var numberOptions = [10, 5, 3, 7];
+  
+  var crystalOptions = ["crystal1", "crystal2", "crystal3", "crystal4"]
 
   // Next we create a for loop to create crystals for every numberOption.
-  for (var i = 0; i < numberOptions.length; i++) {
+  for (var i = 0; i < crystalOptions.length; i++) {
 
     // For each iteration, we will create an imageCrystal
     var imageCrystal = $("<img>");
+    var imageValue = Math.floor(Math.random() * 12) + 1;
+    console.log(imageValue);
+    
 
     // First each crystal will be given the class ".crystal-image".
     // This will allow the CSS to take effect.
@@ -27,7 +33,7 @@
 
     // Each imageCrystal will be given a data attribute called data-crystalValue.
     // This data attribute will be set equal to the array value.
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+    imageCrystal.attr("data-crystalvalue", imageValue[i]);
 
     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $("#crystals").append(imageCrystal);
@@ -45,18 +51,22 @@
     crystalValue = parseInt(crystalValue);
     // We then add the crystalValue to the user's "counter" which is a global variable.
     // Every click, from every crystal adds to the global counter.
-    counter += crystalValue;
+    playerScore += crystalValue;
 
     // All of the same game win-lose logic applies. So the rest remains unchanged.
-    alert("New score: " + counter);
+    playerScore = imageValue + playerScore;
+    $("#userScore").html(playerScore);
 
-    if (counter === targetNumber) {
-      alert("You win!");
+    if (playerScore === targetNumber) {
+      wins++;
+      $("#wins").html(wins);
     }
 
-    else if (counter >= targetNumber) {
-      alert("You lose!!");
+    else if (playerScore >= targetNumber) {
+      losses++;
+      $("#losses").html(losses);
     }
 
   });
 
+}) 
