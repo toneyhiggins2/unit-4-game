@@ -37,6 +37,9 @@ $(document).ready(function() {
     // This data attribute will be set equal to the array value.
     imageCrystal.attr("data-crystalvalue", imageValue);
 
+    imageCrystal.width(100);
+    imageCrystal.height(100);
+
     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $("#crystals").append(imageCrystal);
     //$("#crystals").val(imageValue);
